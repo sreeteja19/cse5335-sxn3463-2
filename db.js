@@ -3,5 +3,5 @@ var connectionString = 'postgres://unhlaerfphkfkm:9TtXOeU-BDpgW3I6K0TNHV_DEu@ec2
 
 var client = new pg.Client(connectionString);
 client.connect();
-var query = client.query('CREATE TABLE EQ(EQ id PRIMARY KEY, YEAR VARCHAR(40) not null, occurance INT(6), intensity INT(6))');
+var query = client.query('CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)');
 query.on('end', function() { client.end(); });
