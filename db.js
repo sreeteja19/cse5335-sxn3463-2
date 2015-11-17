@@ -3,5 +3,5 @@ var connectionString = 'postgres://unhlaerfphkfkm:9TtXOeU-BDpgW3I6K0TNHV_DEu@ec2
 
 var client = new pg.Client(connectionString);
 client.connect();
-var query = client.query('CREATE TABLE items(earthquake id int(3) PRIMARY KEY, year VARCHAR(40) not null, occurance int(6), intensity(6)');
+var query = client.query('CREATE TABLE items(earthquake id int(3) PRIMARY KEY, year VARCHAR(40) not null, occurance int(6), intensity int(6)');
 query.on('end', function() { client.end(); });
