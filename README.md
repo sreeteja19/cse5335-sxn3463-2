@@ -1,4 +1,4 @@
-1A)I used Earth quake data in particular as my source data.
+1A)I used Earth quake data in particular year as my source data.
 2A)git add .
 git commit -m "cmt"
 git push heroku master
