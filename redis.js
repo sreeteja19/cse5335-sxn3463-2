@@ -10,7 +10,7 @@ client.auth('p655vo29h96rs91qu6c3umi30h5');
 client.on('connect', function(err){
     
     if (err) throw err;
-    console.log('Connected...');    
+    console.log('Connection established');    
 });
 
 var csvfile = 'new.csv';
@@ -25,14 +25,14 @@ csv_con.on("end_parsed", function(jsonObj, err){
     for (var i = 0; i<jsonObj.length;i++){
         if (i == 0){
             
-        client.hmset(jsonObj[i].c,'a',jsonObj[i].a, 'b', jsonObj[i].b, function(err){
+        client.hmset(jsonObj[i].intensity,'year',jsonObj[i].year, 'intensity', jsonObj[i].intensity, function(err){
             
             if (err) throw err;
             //console.log('hmset added');
         });
             
         }
-        client.set(jsonObj[i].id, jsonObj[i].a, function(err, reply){
+        client.set(jsonObj[i].e_id, jsonObj[i].intensity, function(err, reply){
             
             if (err) throw err;
             //console.log(reply);
@@ -41,21 +41,21 @@ csv_con.on("end_parsed", function(jsonObj, err){
         
     }
     
-    console.log('Data inserted');
+    console.log('Data inserted to redis');
     }); 
 
     prompt.start();
-    prompt.get(['P_key','S_key'], function(err, res){
+    prompt.get(['key1','key2'], function(err, res){
         
         if (err) throw err;
         
-        client.get(res.P_key, function(err, rep){
+        client.get(res.key1, function(err, rep){
             
             if (err) throw err;
             console.log(rep);
         });
     
-        client.hgetall(res.S_key, function(err, object){
+        client.hgetall(res.key2, function(err, object){
             
             if (err) throw err;
             console.log(object);

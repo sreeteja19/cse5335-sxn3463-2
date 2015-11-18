@@ -35,18 +35,18 @@ var earth = mongoose.model('earth', Players_100_schema,'earths');
 
 prompt.start();
 
-prompt.get(['P_key','S_key'], function (err, result) {
+prompt.get(['key1','key2'], function (err, result) {
    
    if (err) throw err;
    
-   earth.find({'e_id' : result.P_key}).exec(function(err, res){
+   earth.find({'e_id' : result.key1}).exec(function(err, res){
        
        if(err) throw err;
        console.log('%s',res);
        //conn.close();
        });
     
-    earth.find({'year' : result.S_key}).exec(function(err, res) {
+    earth.find({'year' : result.key2}).exec(function(err, res) {
        if(err) throw err;
        console.log('%s',res);
        conn.close();
